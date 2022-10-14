@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """ play_chess.py
-Authors: "Declan Cassidy, Camilo Posada"
+Authors: "Declan Cassidy, Milo Posada"
 
 Makes a chessboard for the user to play on against a decision
 based chess engine.
