@@ -1,4 +1,4 @@
-from Pieces.piece import *
+from PlayChess.Pieces.piece import *
 
 
 def draw_position_by_fen(screen, chess_board, fen):

@@ -20,7 +20,7 @@ TODO: Come up with a more efficient solution for drawing the board after a move 
 TODO: Click drag move is the only type that works right now, include other forms
 TODO: Drag piece with mouse as you drag
 """
-
+import chess
 from pygame.locals import (
     MOUSEBUTTONDOWN,
     MOUSEBUTTONUP,
@@ -31,15 +31,15 @@ from pygame.locals import (
 
 from ChessBoard.board_tools import *
 from ChessBoard.drawing_tools import *
-from engine_declan import *
+from engine import *
 from Pieces.piece import *
 
 # Initializes the pygame library
 pygame.init()
 
 # Returns a surface to work on
-SCREEN_WIDTH = 700
-SCREEN_HEIGHT = 700
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # Initialize board squares and board
@@ -76,7 +76,7 @@ while running:
                 continue
 
             # Calculate engine move and make it
-            engine_move = find_best_move(board)
+            engine_move = find_depth_move(board, 100)
             board.push(engine_move)
 
             # Just draw the board again lmao
