@@ -38,8 +38,8 @@ from Pieces.piece import *
 pygame.init()
 
 # Returns a surface to work on
-SCREEN_WIDTH = 700
-SCREEN_HEIGHT = 700
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # Initialize board squares and board
