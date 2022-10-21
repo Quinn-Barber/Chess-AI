@@ -83,7 +83,6 @@ while running:
 
             # Calculate engine move and make it
             moves = find_best_move(board, 2)
-            print(moves)
             engine_move = random.choice(moves[max(moves)])
             board.push(engine_move)
 
