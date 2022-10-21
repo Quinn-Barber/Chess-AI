@@ -8,9 +8,9 @@ def evaluate_position(board, fen):
     """
     if(board.is_checkmate()):
         if(board.outcome().winner):
-            return 1000
+            return 49
         else:
-            return -1000
+            return -49
 
     if(board.is_stalemate()):
         return 0
