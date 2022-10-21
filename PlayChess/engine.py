@@ -25,13 +25,16 @@ def find_depth_move(b, depth):
     :param b:
     :return move:
     """
+    if(depth is 0):
+        return evaluate_position(b.fen())
+
     moves = list(b.legal_moves)
     vs = {}
     [vs.setdefault(i, []) for i in range(-50, 50, 1)]
 
     for i, move in zip(range(len(moves)), moves):
         b.push(move)
-        v = find_best_move(b)
+        v = find_depth_move(b, depth-1)
         vs[v].append(move)
         b.pop()
 
@@ -42,27 +45,3 @@ def find_depth_move(b, depth):
         return random.choice(vs[max(vs)])
     else:
         return random.choice(vs[min(vs)])
-
-def find_best_move(b):
-    """ Checks position evaluation in depth 1 search and chooses best move for player
-    :param b:
-    :return move:
-    """
-    moves = list(b.legal_moves)
-    vs = {}
-    [vs.setdefault(i, []) for i in range(-50, 50, 1)]
-
-    for i, move in zip(range(len(moves)), moves):
-        b.push(move)
-        v = evaluate_position(b.fen())
-        vs[v].append(move)
-        b.pop()
-
-    for i in range(-50, 50, 1):
-        if not vs[i]: vs.pop(i)
-
-    if b.turn:
-        return max(vs)
-    else:
-        return min(vs)
-

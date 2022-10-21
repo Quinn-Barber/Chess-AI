@@ -76,7 +76,7 @@ while running:
                 continue
 
             # Calculate engine move and make it
-            engine_move = find_depth_move(board, 100)
+            engine_move = find_depth_move(board, 2)
             board.push(engine_move)
 
             # Just draw the board again lmao
