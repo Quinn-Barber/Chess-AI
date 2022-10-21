@@ -1,11 +1,20 @@
 import random
 
 
-def evaluate_position(fen):
+def evaluate_position(board, fen):
     """ Evaluates the position of the board based on material
     :param fen:
     :return: evaluation
     """
+    if(board.is_checkmate()):
+        if(board.outcome().winner):
+            return 1000
+        else:
+            return -1000
+
+    if(board.is_stalemate()):
+        return 0
+
     valuations = {'K': 100, 'Q': 9, 'R': 5, 'N': 3, 'B': 3, 'P': 1,  # White
                   'k': -100, 'q': -9, 'r': -5, 'n': -3, 'b': -3, 'p': -1,  # Black
                   }
@@ -20,37 +29,37 @@ def evaluate_position(fen):
 
     return evaluation
 
-def find_depth_move(b, depth):
-    return find_depth_move_recursion(b, depth, depth)
+def find_depth_move(board, depth):
+    return find_depth_move_recursion(board, depth, depth)
 
-def find_depth_move_recursion(b, depth, returnDepth):
+def find_depth_move_recursion(board, depth, returnDepth):
     """ Checks position evaluation out of all possibilities depth moves forward and chooses best move
     :param b:
     :return move:
     """
     if(depth == 0):
-        return evaluate_position(b.fen())
+        return evaluate_position(board, board.fen())
 
-    moves = list(b.legal_moves)
+    moves = list(board.legal_moves)
     vs = {}
     [vs.setdefault(i, []) for i in range(-50, 50, 1)]
 
     for i, move in zip(range(len(moves)), moves):
-        b.push(move)
-        v = find_depth_move_recursion(b, depth-1, returnDepth)
+        board.push(move)
+        v = find_depth_move_recursion(board, depth-1, returnDepth)
         vs[v].append(move)
-        b.pop()
+        board.pop()
 
     for i in range(-50, 50, 1):
         if not vs[i]: vs.pop(i)
 
     if(depth == returnDepth):
-        if b.turn:
+        if(board.turn):
             return random.choice(vs[max(vs)])
         else:
             return random.choice(vs[min(vs)])
     else:
-        if b.turn:
+        if(board.turn):
             return max(vs)
         else:
             return min(vs)
