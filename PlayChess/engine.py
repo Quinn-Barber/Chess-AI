@@ -20,12 +20,12 @@ def evaluate_position(fen):
 
     return evaluation
 
-def find_depth_move(b, depth):
+def find_depth_move_recursion(b, depth, returnDepth):
     """ Checks position evaluation out of all possibilities depth moves forward and chooses best move
     :param b:
     :return move:
     """
-    if(depth is 0):
+    if(depth == 0):
         return evaluate_position(b.fen())
 
     moves = list(b.legal_moves)
@@ -41,7 +41,12 @@ def find_depth_move(b, depth):
     for i in range(-50, 50, 1):
         if not vs[i]: vs.pop(i)
 
+    if(depth == returnDepth):
+        if b.turn:
+            return random.choice(vs[max(vs)])
+        else:
+            return random.choice(vs[min(vs)])
     if b.turn:
-        return random.choice(vs[max(vs)])
+        return max(vs)
     else:
-        return random.choice(vs[min(vs)])
+        return min(vs)
