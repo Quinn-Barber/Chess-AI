@@ -40,9 +40,9 @@ class Pawn(Piece):
     @property
     def piece_image(self):
         if self.color == "BLACK":
-            return pygame.image.load("./images/BP.png").convert_alpha()
+            return pygame.image.load("./Images/BP.png").convert_alpha()
         else:
-            return pygame.image.load("./images/WP.png").convert_alpha()
+            return pygame.image.load("./Images/WP.png").convert_alpha()
 
 
 class Knight(Piece):
@@ -62,9 +62,9 @@ class Knight(Piece):
     @property
     def piece_image(self):
         if self.color == "BLACK":
-            return pygame.image.load("./images/BN.png").convert_alpha()
+            return pygame.image.load("./Images/BN.png").convert_alpha()
         else:
-            return pygame.image.load("./images/WN.png").convert_alpha()
+            return pygame.image.load("./Images/WN.png").convert_alpha()
 
 
 class Bishop(Piece):
@@ -84,9 +84,9 @@ class Bishop(Piece):
     @property
     def piece_image(self):
         if self.color == "BLACK":
-            return pygame.image.load("./images/BB.png").convert_alpha()
+            return pygame.image.load("./Images/BB.png").convert_alpha()
         else:
-            return pygame.image.load("./images/WB.png").convert_alpha()
+            return pygame.image.load("./Images/WB.png").convert_alpha()
 
 
 class Rook(Piece):
@@ -106,9 +106,9 @@ class Rook(Piece):
     @property
     def piece_image(self):
         if self.color == "BLACK":
-            return pygame.image.load("./images/BR.png").convert_alpha()
+            return pygame.image.load("./Images/BR.png").convert_alpha()
         else:
-            return pygame.image.load("./images/WR.png").convert_alpha()
+            return pygame.image.load("./Images/WR.png").convert_alpha()
 
 
 class Queen(Piece):
@@ -128,9 +128,9 @@ class Queen(Piece):
     @property
     def piece_image(self):
         if self.color == "BLACK":
-            return pygame.image.load("./images/BQ.png").convert_alpha()
+            return pygame.image.load("./Images/BQ.png").convert_alpha()
         else:
-            return pygame.image.load("./images/WQ.png").convert_alpha()
+            return pygame.image.load("./Images/WQ.png").convert_alpha()
 
 
 class King(Piece):
@@ -150,6 +150,6 @@ class King(Piece):
     @property
     def piece_image(self):
         if self.color == "BLACK":
-            return pygame.image.load("./images/BK.png").convert_alpha()
+            return pygame.image.load("./Images/BK.png").convert_alpha()
         else:
-            return pygame.image.load("./images/WK.png").convert_alpha()
+            return pygame.image.load("./Images/WK.png").convert_alpha()
