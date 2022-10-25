@@ -52,8 +52,3 @@ def find_best_move(board, depth):
         board.pop()
 
     return {max(evals): evals[max(evals)]}
-
-
-board = chess.Board("8/8/R5pr/6p1/5pPk/5P1p/5P1K/8 b - - 1 1")
-moves = find_best_move(board, 3)
-print(moves)
