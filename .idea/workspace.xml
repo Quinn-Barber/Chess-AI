@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="086cf983-b79b-49a6-9eec-defe7bc44d3d" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/Chess-AI.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
@@ -11,6 +12,9 @@
       <change beforePath="$PROJECT_DIR$/PlayChess/engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlayChess/engine.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlayChess/play_chess.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlayChess/play_chess.py" afterDir="false" />
     </list>
+=======
+    <list default="true" id="086cf983-b79b-49a6-9eec-defe7bc44d3d" name="Changes" comment="" />
+>>>>>>> 67e466c828c716900540fde0743ae8f8ab394e4b
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +31,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -34,6 +39,15 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
+>>>>>>> 67e466c828c716900540fde0743ae8f8ab394e4b
   <component name="RunManager">
     <configuration name="play_chess" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Chess-AI" />
