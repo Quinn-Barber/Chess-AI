@@ -1,17 +1,18 @@
-import chess.svg
-from chessboard import display
-import random
-from time import sleep
+import chess
 
-
-def evaluate_position(fen):
+def evaluate_position(board):
     """ Evaluates the position of the board based on material
-    :param fen:
+    :param b: board
     :return: evaluation
     """
+    if board.outcome():
+        return -1000
+
+    fen = board.fen()
     valuations = {'K': 100, 'Q': 9, 'R': 5, 'N': 3, 'B': 3, 'P': 1,  # White
                   'k': -100, 'q': -9, 'r': -5, 'n': -3, 'b': -3, 'p': -1,  # Black
                   }
+
     evaluation = 0
     for s in fen:
         # Only look at the characters that are actually in the dictionary
@@ -21,54 +22,38 @@ def evaluate_position(fen):
         if s == ' ':
             break
 
-    return evaluation
+    factor = 1 if board.turn else -1
+    return evaluation * factor
 
 
-def find_best_move(b):
-    """ Checks position evaluation in depth 1 search and chooses best move for player
-    :param b:
-    :return move:
-    """
-    moves = list(b.legal_moves)
-    vs = {}
-    [vs.setdefault(i, []) for i in range(-50, 50, 1)]
+def find_best_move(board, depth):
+    # When the depth is at its end, return evaluation + last move
+    if depth == 0:
+        return {evaluate_position(board): [board.move_stack[-1]]}
 
-    for i, move in zip(range(len(moves)), moves):
-        b.push(move)
-        v = evaluate_position(b.fen())
-        vs[v].append(move)
-        b.pop()
+    evals = {}
+    for move in list(board.legal_moves):
+        board.push(move)
+        lowest_eval = 0
+        if board.is_checkmate():
+            lowest_eval = 1000
+        else:
+            for response in list(board.legal_moves):
+                board.push(response)
+                eval = list(find_best_move(board, depth - 1).keys())[0]
+                board.pop()
 
-    for i in range(-50, 50, 1):
-        if not vs[i]: vs.pop(i)
+                lowest_eval = lowest_eval if lowest_eval < eval else eval
 
-    if b.turn:
-        move = random.choice(vs[max(vs)])
-    else:
-        move = random.choice(vs[min(vs)])
-    return move
+        if lowest_eval not in list(evals.keys()):
+            evals[lowest_eval] = []
 
-"""
-# Intervals between moves
-move_interval = 0.1
+        evals[lowest_eval].append(move)
+        board.pop()
 
-# Create board and initial visualization
-board = chess.Board()
-valid_fen = board.fen()
-game_board = display.start(valid_fen)
+    return {max(evals): evals[max(evals)]}
 
-while not display.check_for_quit():
-    print("Material:", evaluate_position(board.fen()))
 
-    # Generate engine move
-    engine_move = find_best_move(board)
-    board.push(engine_move)
-    # TODO: Choose engine move with best evaluation for player
-
-    # Update display of board and wait
-    valid_fen = board.fen()
-    display.update(valid_fen, game_board)
-    sleep(move_interval)
-
-display.terminate()
-"""
+board = chess.Board("8/8/R5pr/6p1/5pPk/5P1p/5P1K/8 b - - 1 1")
+moves = find_best_move(board, 3)
+print(moves)

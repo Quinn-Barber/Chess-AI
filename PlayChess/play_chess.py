@@ -20,6 +20,8 @@ TODO: Come up with a more efficient solution for drawing the board after a move 
 TODO: Click drag move is the only type that works right now, include other forms
 TODO: Drag piece with mouse as you drag
 """
+import random
+
 import chess
 from pygame.locals import (
     MOUSEBUTTONDOWN,
@@ -31,7 +33,7 @@ from pygame.locals import (
 
 from ChessBoard.board_tools import *
 from ChessBoard.drawing_tools import *
-from engine import *
+from engine_declan import find_best_move
 from Pieces.piece import *
 
 # Initializes the pygame library
@@ -75,11 +77,17 @@ while running:
                 # If this line weren't here the engine would just make a move for white when you make an illegal move
                 continue
 
+            # Just draw the board again lmao part 1
+            draw_squares(screen, chess_board)
+            draw_position_by_fen(screen, chess_board, board.fen())
+
             # Calculate engine move and make it
-            engine_move = find_depth_move(board, 100)
+            moves = find_best_move(board, 2)
+            print(moves)
+            engine_move = random.choice(moves[max(moves)])
             board.push(engine_move)
 
-            # Just draw the board again lmao
+            # Just draw the board again lmao part 2
             draw_squares(screen, chess_board)
             draw_position_by_fen(screen, chess_board, board.fen())
 
