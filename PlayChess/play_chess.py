@@ -31,10 +31,10 @@ from pygame.locals import (
     QUIT,
 )
 
-from ChessBoard.board_tools import *
-from ChessBoard.drawing_tools import *
+from modules.board_tools import *
+from modules.drawing_tools import *
+from modules.piece import *
 from engine_declan import find_best_move
-from Pieces.piece import *
 
 # Initializes the pygame library
 pygame.init()
