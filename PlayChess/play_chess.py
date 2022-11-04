@@ -69,9 +69,15 @@ while running:
             # Chess.Move throws an error that crashes the program is the move is the same square twice
             if square1 == square2:
                 continue
-            move = chess.Move.from_uci((square1.lower() + square2.lower()))
+            move_string = square1.lower() + square2.lower()
+            move = chess.Move.from_uci(move_string)  # creates player move
+            # move.promotion = 5
+
             moves = list(board.legal_moves)
             if move in moves:
+                board.push(move)
+            elif chess.Move.from_uci(move_string + 'q') in moves:
+                move = chess.Move.from_uci(move_string + 'q')
                 board.push(move)
             else:
                 # If this line weren't here the engine would just make a move for white when you make an illegal move
@@ -82,7 +88,7 @@ while running:
             draw_position_by_fen(screen, chess_board, board.fen())
 
             # Calculate engine move and make it
-            moves = find_best_move(board, 2)
+            moves = find_best_move(board, 1)
             engine_move = random.choice(moves[max(moves)])
             board.push(engine_move)
 
