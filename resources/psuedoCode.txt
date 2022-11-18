@@ -1,0 +1,34 @@
+
+START OF FUNCTION
+PARAMETERS : { board, depth }
+
+if( (depth <= 0 && stable) || depth <= -8 )
+	return eval
+
+legal moves from current player. (WHITE)
+
+loop legal moves
+	loop other players moves:
+		if(not stable) // FUNCTION FOR THIS
+			add to unstable list
+			continue
+		else
+			update best stable move for BLACK
+		END LOOP
+	add best stable move for BLACK to stable list
+	END LOOP
+
+continue evaluating unstable
+and "worst" best move for BLACK in stable list (maybe top 3)
+
+if( multiple same number )
+	check board positions
+
+
+LATER
+ADD OPENING THEORY
+LIST OF BOARD FENS
+IF THIS THEN PLAY THIS
+
+LATER LATER
+IF ENDGAME PRIORITIZE MOVING TOWARDS THE KING
