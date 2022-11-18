@@ -35,6 +35,7 @@ from modules.board_tools import *
 from modules.drawing_tools import *
 from modules.piece import *
 from engine_declan import find_best_move
+from engine import find_depth_move
 
 # Initializes the pygame library
 pygame.init()
@@ -87,9 +88,11 @@ while running:
             draw_squares(screen, chess_board)
             draw_position_by_fen(screen, chess_board, board.fen())
 
+            #print(board.is_check(), "\n")
+            #print(board.attacks(chess.E4), "\n")
             # Calculate engine move and make it
-            moves = find_best_move(board, 1)
-            engine_move = random.choice(moves[max(moves)])
+            engine_move = find_depth_move(board, 2)
+            #engine_move = random.choice(moves[max(moves)])
             board.push(engine_move)
 
             # Just draw the board again lmao part 2

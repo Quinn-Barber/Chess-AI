@@ -63,3 +63,37 @@ def find_depth_move_recursion(board, depth, returnDepth):
             return max(vs)
         else:
             return min(vs)
+
+# Determines Stability
+# New engine must always evaluate at least two moves ahead
+# New engine must always evaluate positions where this function returns 1 (UNLESS PAST 10 DEPTH)
+# Overall depth will vary from 2-10 but be much quicker to calculate
+def not_stable(board):
+    """
+    Returns 1 if not quasi stable
+        - If any piece is attacked by another of lower value
+        - If any piece has more attackers than defenders
+        - If any check exists from opponent
+    Returns 0 if quasi stable
+        - None of the above
+    :param board:
+    :return: 1 | 0
+    """
+    # Edge cases (need to be dealt with externally i.e: display game result and such)
+    # if board.is_check() or board.is_stalemate() or board.is_fivefold_repetition() or board.is_seventyfive_moves() or board.is_insufficient_material() or board.is_checkmate()
+        # return 1
+    # loop through every spot on the board:
+        # if it contains a piece:
+            # loop through board.attackers(chess.WHITE, square) and board.attackers(chess.BLACK, square) and add them to different saved values
+            # if these values are not equal
+                # return 1
+            # else if these values are not 0
+                # if any of the attackers is less valuable than attacked piece
+                    # return 1
+        # else
+            # if there is a check from this square
+                # if this square is controlled by an opponent piece
+                    # return 1
+    # end loop
+    # return 0
+
