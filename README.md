@@ -1,4 +1,4 @@
-## **_CHESS A.I._**: FishStock Version 1.0
+## **_CHESS A.I._**: FishStock Version Beta 1.0
 
 ### Downloading FishStock:
 
