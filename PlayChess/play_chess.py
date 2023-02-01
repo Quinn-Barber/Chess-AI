@@ -1,17 +1,18 @@
 #!/usr/bin/env python
-""" play_chess.py
-Authors: "Declan Cassidy, Milo Posada"
+""" 
+play_chess.py
+    Makes a chessboard for the user to play on against a decision
+    based chess engine.
 
-Makes a chessboard for the user to play on against a decision
-based chess engine.
+    Currently, it uses engine.py to represent the engine that you play against but this can be changed easily
+    by looking at the engine_move variable declaration in the game loop.
 
-Currently, it uses engine_declan.py to represent the engine that you play against but this can be changed easily
-by looking at the engine_move variable declaration in the game loop.
+How to use:
+    To use your own engine with this, replace the 'from engine_declan.py import *' statement with your own engine's
+    file location. Then replace the 'engine_move = <function>' statement in the game loop with a function from your
+    file that returns a legal engine move.
 
-HOW TO USE:
-To use your own engine with this, replace the 'from engine_declan.py import *' statement with your own engine's
-file location. Then replace the 'engine_move = <function>' statement in the game loop with a function from your
-file that returns a legal engine move.
+Authors: Declan Cassidy, Milo Posada
 
 TODO: Check if game state is checkmate or draw, so we can exit instead of program crashing
 TODO: Allow the player to play as black
