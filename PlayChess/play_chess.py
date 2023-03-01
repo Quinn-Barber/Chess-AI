@@ -89,11 +89,8 @@ while running:
             draw_squares(screen, chess_board)
             draw_position_by_fen(screen, chess_board, board.fen())
 
-            #print(board.is_check(), "\n")
-            #print(board.attacks(chess.E4), "\n")
             # Calculate engine move and make it
-            engine_move = find_depth_move(board, 2)
-            #engine_move = random.choice(moves[max(moves)])
+            engine_move = find_depth_move(board, 10)
             board.push(engine_move)
 
             # Just draw the board again lmao part 2
