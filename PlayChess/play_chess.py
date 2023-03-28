@@ -13,6 +13,7 @@ How to use:
     file that returns a legal engine move.
 
 Authors: Declan Cassidy, Milo Posada
+POV: Physics & Math major writes Python
 
 TODO: Check if game state is checkmate or draw, so we can exit instead of program crashing
 TODO: Allow the player to play as black
@@ -35,7 +36,7 @@ from pygame.locals import (
 from modules.board_tools import *
 from modules.drawing_tools import *
 from modules.piece import *
-from engine_declan import find_best_move
+from engine import is_stable
 from engine import find_depth_move
 
 # Initializes the pygame library
@@ -89,13 +90,21 @@ while running:
             draw_squares(screen, chess_board)
             draw_position_by_fen(screen, chess_board, board.fen())
 
-            # Calculate engine move and make it
-            engine_move = find_depth_move(board, 10)
-            board.push(engine_move)
+            if board.is_checkmate():
+                print("Good game! You Win!")
+            elif board.is_stalemate():
+                print("Good game! Draw!")
+            else:
+                # Calculate engine move and make it if not checkmate
+                engine_move = find_depth_move(board, 3)
+                board.push(engine_move)
 
             # Just draw the board again lmao part 2
             draw_squares(screen, chess_board)
             draw_position_by_fen(screen, chess_board, board.fen())
+
+            if board.is_checkmate():
+                print("Good game! You Lose!")
 
         elif event.type == QUIT:
             running = False
