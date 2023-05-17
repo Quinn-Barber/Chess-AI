@@ -1,4 +1,22 @@
-## **_CHESS A.I._**: FishStock Version Beta 1.0
+## **_CHESS A.I._**: FishStock
+
+### How it works:
+
+FishStock is a decision-based artificial intelligence that plays as black against any human white player. It uses a min-max tree with an alpha-beta pruning algorithm that runs every move. When you play against FishStock it will wait for your move before making its decision, it will look ahead several moves before responding appropriately. 
+
+
+<p align="center">
+  <img src="https://github.com/Quinn-Barber/Chess-AI/blob/main/chessboard3.png?raw=true"/>
+</p>
+
+
+The engine also displays the number of pruned positions, and the algorithms work directly off of evaluations of the game board. While the displayed number may not look like much, it represents the positions that it no longer looks ahead on. The real time saved is in the several factors higher number of positions it would evaluate if it did not prune.
+
+
+<p align="center">
+  <img src="https://github.com/Quinn-Barber/Chess-AI/blob/main/chessboard4.png?raw=true"/>
+</p>
+
 
 ### Downloading FishStock:
 
