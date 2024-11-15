@@ -20,10 +20,6 @@ The engine also displays the number of pruned positions, and the algorithms work
 
 ### Downloading FishStock:
 
-**_This project is ongoing and changes are being made on a weekly basis, keep this into consideration
-if you are considering downloading the engine, as if you want to update you may need to pull changes
-from the repository._**
-
 # **Step 1:**
 
 Find the location on your computer that you would like to save FishStock to.
